@@ -1,0 +1,371 @@
+{
+  "name": "MRSUBG_Skeleton",
+  "source_ide": "STM32CubeIDE",
+  "path": "C:/Users/micke/STM32Cube/Repository/STM32Cube_FW_WL3_V1.5.0/Projects/NUCLEO-WL33CC/Examples/MRSUBG/MRSUBG_Skeleton/STM32CubeIDE",
+  "languages": [
+      "C"
+  ],
+  "configurations": [
+    {
+      "name": "Debug",
+      "output_filename": "MRSUBG_Skeleton",
+      "type": "Executable",
+      "toolchain_type": "GCC",
+      "toolchain_prefix": "arm-none-eabi-",
+      "mcu": "STM32WL33CCVx",
+      "board": "genericBoard",
+      "sources": [
+        { "path": "Application/Startup/startup_stm32wl33ccvx.s" },
+        { "path": "../Src/main.c" },
+        { "path": "../Src/stm32wl3x_hal_msp.c" },
+        { "path": "../Src/stm32wl3x_it.c" },
+        { "path": "Application/User/syscalls.c" },
+        { "path": "Application/User/sysmem.c" },
+        { "path": "../README.md" },
+        { "path": "../../../../../../Drivers/BSP/STM32WL3x-Nucleo/stm32wl3x_nucleo.c" },
+        { "path": "../Src/system_stm32wl3x.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_cortex.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_dma.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_flash.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_flash_ex.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_gpio.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_mrsubg.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_pwr.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_pwr_ex.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_rcc.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_rcc_ex.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_tim.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_tim_ex.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_ll_utils.c" },
+        { "path": "../MRSUBG_Skeleton.ioc" }
+      ],
+      "tools": [
+            {
+              "type": "c_assembler",
+              "options": {
+                      "option.debuglevel": "-g3",
+                      "option.definedsymbols": "-DDEBUG",
+                      "option.preprocessassembler": "-x assembler-with-cpp"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-g3",
+                  "-DDEBUG",
+                  "-x",
+                  "assembler-with-cpp"
+              ]
+            },
+            {
+              "type": "c_compiler",
+              "options": {
+                      "option.languagestandard": "-std=gnu11",
+                      "option.debuglevel": "-g3",
+                      "option.definedsymbols": "-DDEBUG, -DSTM32WL3XX, -DUSE_HAL_DRIVER",
+                      "option.includepaths": "-I../../Inc, -I../../../../../../../Drivers/STM32WL3x_HAL_Driver/Inc, -I../../../../../../../Drivers/STM32WL3x_HAL_Driver/Inc/Legacy, -I../../../../../../../Drivers/CMSIS/Device/ST/STM32WL3X/Include, -I../../../../../../../Drivers/CMSIS/Include, -I../../../../../../../Drivers/BSP/STM32WL3x-Nucleo",
+                      "option.optimization.level": "-O0",
+                      "option.ffunction": "-ffunction-sections",
+                      "option.fdata": "-fdata-sections",
+                      "option.warnings.all": "-Wall",
+                      "option.fstackusage": "-fstack-usage",
+                      "option.cyclomaticcomplexity": "-fcyclomatic-complexity"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-std=gnu11",
+                  "-g3",
+                  "-DDEBUG",
+                  "-DSTM32WL3XX",
+                  "-DUSE_HAL_DRIVER",
+                  "-I../../Inc",
+                  "-I../../../../../../../Drivers/STM32WL3x_HAL_Driver/Inc",
+                  "-I../../../../../../../Drivers/STM32WL3x_HAL_Driver/Inc/Legacy",
+                  "-I../../../../../../../Drivers/CMSIS/Device/ST/STM32WL3X/Include",
+                  "-I../../../../../../../Drivers/CMSIS/Include",
+                  "-I../../../../../../../Drivers/BSP/STM32WL3x-Nucleo",
+                  "-O0",
+                  "-ffunction-sections",
+                  "-fdata-sections",
+                  "-Wall",
+                  "-fstack-usage",
+                  "-fcyclomatic-complexity"
+              ]
+            },
+            {
+              "type": "cpp_compiler",
+              "options": {
+                      "option.languagestandard": "-std=gnu++14",
+                      "option.debuglevel": "-g3",
+                      "option.optimization.level": "-O0",
+                      "option.ffunction": "-ffunction-sections",
+                      "option.fdata": "-fdata-sections",
+                      "option.noexceptions": "-fno-exceptions",
+                      "option.nortti": "-fno-rtti",
+                      "option.nousecxaatexit": "-fno-use-cxa-atexit",
+                      "option.warnings.all": "-Wall",
+                      "option.fstackusage": "-fstack-usage",
+                      "option.cyclomaticcomplexity": "-fcyclomatic-complexity"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-std=gnu++14",
+                  "-g3",
+                  "-O0",
+                  "-ffunction-sections",
+                  "-fdata-sections",
+                  "-fno-exceptions",
+                  "-fno-rtti",
+                  "-fno-use-cxa-atexit",
+                  "-Wall",
+                  "-fstack-usage",
+                  "-fcyclomatic-complexity"
+              ]
+            },
+            {
+              "type": "c_linker",
+              "options": {
+                      "option.script": "-T\"C:/Users/micke/STM32Cube/Repository/STM32Cube_FW_WL3_V1.5.0/Projects/NUCLEO-WL33CC/Examples/MRSUBG/MRSUBG_Skeleton/STM32CubeIDE/STM32WL33CCVX_FLASH.ld\"",
+                      "option.systemcalls": "--specs=nosys.specs",
+                      "option.map": "-Wl,-Map=\"MRSUBG_Skeleton.map\"",
+                      "option.gcsections": "-Wl,--gc-sections",
+                      "option.static": "-static",
+                      "option.generate.secure.lib": "-Wl,--cmse-implib -Wl,--out-implib=./secure_nsclib.o",
+                      "option.libmath": "-Wl,--start-group -lc -lm -Wl,--end-group"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-T\"C:/Users/micke/STM32Cube/Repository/STM32Cube_FW_WL3_V1.5.0/Projects/NUCLEO-WL33CC/Examples/MRSUBG/MRSUBG_Skeleton/STM32CubeIDE/STM32WL33CCVX_FLASH.ld\"",
+                  "--specs=nosys.specs",
+                  "-Wl,-Map=\"MRSUBG_Skeleton.map\"",
+                  "-Wl,--gc-sections",
+                  "-static"
+              ]
+            },
+            {
+              "type": "cpp_linker",
+              "options": {
+                      "option.script": "-T\"\"",
+                      "option.systemcalls": "--specs=nosys.specs",
+                      "option.map": "-Wl,-Map=\"MRSUBG_Skeleton.map\"",
+                      "option.gcsections": "-Wl,--gc-sections",
+                      "option.static": "-static",
+                      "option.generate.secure.lib": "-Wl,--cmse-implib -Wl,--out-implib=./secure_nsclib.o",
+                      "option.libmath": "-Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-T\"\"",
+                  "--specs=nosys.specs",
+                  "-Wl,-Map=\"MRSUBG_Skeleton.map\"",
+                  "-Wl,--gc-sections",
+                  "-static"
+              ]
+            },
+            {
+              "type": "c_archiver",
+              "options": {
+                      "option.replace": "-r"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-r"
+              ]
+            }
+        ]
+    },
+    {
+      "name": "Release",
+      "output_filename": "MRSUBG_Skeleton",
+      "type": "Executable",
+      "toolchain_type": "GCC",
+      "toolchain_prefix": "arm-none-eabi-",
+      "mcu": "STM32WL33CCVx",
+      "board": "genericBoard",
+      "sources": [
+        { "path": "Application/Startup/startup_stm32wl33ccvx.s" },
+        { "path": "../Src/main.c" },
+        { "path": "../Src/stm32wl3x_hal_msp.c" },
+        { "path": "../Src/stm32wl3x_it.c" },
+        { "path": "Application/User/syscalls.c" },
+        { "path": "Application/User/sysmem.c" },
+        { "path": "../README.md" },
+        { "path": "../../../../../../Drivers/BSP/STM32WL3x-Nucleo/stm32wl3x_nucleo.c" },
+        { "path": "../Src/system_stm32wl3x.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_cortex.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_dma.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_flash.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_flash_ex.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_gpio.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_mrsubg.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_pwr.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_pwr_ex.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_rcc.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_rcc_ex.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_tim.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_tim_ex.c" },
+        { "path": "../../../../../../Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_ll_utils.c" },
+        { "path": "../MRSUBG_Skeleton.ioc" }
+      ],
+      "tools": [
+            {
+              "type": "c_assembler",
+              "options": {
+                      "option.preprocessassembler": "-x assembler-with-cpp"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-x",
+                  "assembler-with-cpp"
+              ]
+            },
+            {
+              "type": "c_compiler",
+              "options": {
+                      "option.languagestandard": "-std=gnu11",
+                      "option.definedsymbols": "-DSTM32WL3XX, -DUSE_HAL_DRIVER",
+                      "option.includepaths": "-I../../Inc, -I../../../../../../../Drivers/STM32WL3x_HAL_Driver/Inc, -I../../../../../../../Drivers/STM32WL3x_HAL_Driver/Inc/Legacy, -I../../../../../../../Drivers/CMSIS/Device/ST/STM32WL3X/Include, -I../../../../../../../Drivers/CMSIS/Include, -I../../../../../../../Drivers/BSP/STM32WL3x-Nucleo",
+                      "option.optimization.level": "-Os",
+                      "option.ffunction": "-ffunction-sections",
+                      "option.fdata": "-fdata-sections",
+                      "option.warnings.all": "-Wall",
+                      "option.fstackusage": "-fstack-usage",
+                      "option.cyclomaticcomplexity": "-fcyclomatic-complexity"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-std=gnu11",
+                  "-DSTM32WL3XX",
+                  "-DUSE_HAL_DRIVER",
+                  "-I../../Inc",
+                  "-I../../../../../../../Drivers/STM32WL3x_HAL_Driver/Inc",
+                  "-I../../../../../../../Drivers/STM32WL3x_HAL_Driver/Inc/Legacy",
+                  "-I../../../../../../../Drivers/CMSIS/Device/ST/STM32WL3X/Include",
+                  "-I../../../../../../../Drivers/CMSIS/Include",
+                  "-I../../../../../../../Drivers/BSP/STM32WL3x-Nucleo",
+                  "-Os",
+                  "-ffunction-sections",
+                  "-fdata-sections",
+                  "-Wall",
+                  "-fstack-usage",
+                  "-fcyclomatic-complexity"
+              ]
+            },
+            {
+              "type": "cpp_compiler",
+              "options": {
+                      "option.languagestandard": "-std=gnu++14",
+                      "option.optimization.level": "-Os",
+                      "option.ffunction": "-ffunction-sections",
+                      "option.fdata": "-fdata-sections",
+                      "option.noexceptions": "-fno-exceptions",
+                      "option.nortti": "-fno-rtti",
+                      "option.nousecxaatexit": "-fno-use-cxa-atexit",
+                      "option.warnings.all": "-Wall",
+                      "option.fstackusage": "-fstack-usage",
+                      "option.cyclomaticcomplexity": "-fcyclomatic-complexity"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-std=gnu++14",
+                  "-Os",
+                  "-ffunction-sections",
+                  "-fdata-sections",
+                  "-fno-exceptions",
+                  "-fno-rtti",
+                  "-fno-use-cxa-atexit",
+                  "-Wall",
+                  "-fstack-usage",
+                  "-fcyclomatic-complexity"
+              ]
+            },
+            {
+              "type": "c_linker",
+              "options": {
+                      "option.script": "-T\"C:/Users/micke/STM32Cube/Repository/STM32Cube_FW_WL3_V1.5.0/Projects/NUCLEO-WL33CC/Examples/MRSUBG/MRSUBG_Skeleton/STM32CubeIDE/STM32WL33CCVX_FLASH.ld\"",
+                      "option.systemcalls": "--specs=nosys.specs",
+                      "option.map": "-Wl,-Map=\"MRSUBG_Skeleton.map\"",
+                      "option.gcsections": "-Wl,--gc-sections",
+                      "option.static": "-static",
+                      "option.generate.secure.lib": "-Wl,--cmse-implib -Wl,--out-implib=./secure_nsclib.o",
+                      "option.libmath": "-Wl,--start-group -lc -lm -Wl,--end-group"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-T\"C:/Users/micke/STM32Cube/Repository/STM32Cube_FW_WL3_V1.5.0/Projects/NUCLEO-WL33CC/Examples/MRSUBG/MRSUBG_Skeleton/STM32CubeIDE/STM32WL33CCVX_FLASH.ld\"",
+                  "--specs=nosys.specs",
+                  "-Wl,-Map=\"MRSUBG_Skeleton.map\"",
+                  "-Wl,--gc-sections",
+                  "-static"
+              ]
+            },
+            {
+              "type": "cpp_linker",
+              "options": {
+                      "option.script": "-T\"\"",
+                      "option.systemcalls": "--specs=nosys.specs",
+                      "option.map": "-Wl,-Map=\"MRSUBG_Skeleton.map\"",
+                      "option.gcsections": "-Wl,--gc-sections",
+                      "option.static": "-static",
+                      "option.generate.secure.lib": "-Wl,--cmse-implib -Wl,--out-implib=./secure_nsclib.o",
+                      "option.libmath": "-Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-T\"\"",
+                  "--specs=nosys.specs",
+                  "-Wl,-Map=\"MRSUBG_Skeleton.map\"",
+                  "-Wl,--gc-sections",
+                  "-static"
+              ]
+            },
+            {
+              "type": "c_archiver",
+              "options": {
+                      "option.replace": "-r"
+              },
+              "flags": [
+                  "-mfloat-abi=soft",
+                  "-mthumb",
+                  "--specs=nano.specs",
+                  "-mcpu=cortex-m0plus",
+                  "-r"
+              ]
+            }
+        ]
+    }
+  ]
+}

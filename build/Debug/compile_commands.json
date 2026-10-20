@@ -1,0 +1,134 @@
+[
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -g3 -x assembler-with-cpp -o CMakeFiles\\MRSUBG_Skeleton.dir\\Application\\Startup\\startup_stm32wl33ccvx.s.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Application\\Startup\\startup_stm32wl33ccvx.s",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Application/Startup/startup_stm32wl33ccvx.s",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Application/Startup/startup_stm32wl33ccvx.s.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Src\\main.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Src\\main.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Src/main.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Src/main.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Src\\stm32wl3x_hal_msp.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Src\\stm32wl3x_hal_msp.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Src/stm32wl3x_hal_msp.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Src/stm32wl3x_hal_msp.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Src\\stm32wl3x_it.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Src\\stm32wl3x_it.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Src/stm32wl3x_it.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Src/stm32wl3x_it.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Application\\User\\syscalls.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Application\\User\\syscalls.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Application/User/syscalls.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Application/User/syscalls.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Application\\User\\sysmem.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Application\\User\\sysmem.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Application/User/sysmem.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Application/User/sysmem.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\BSP\\STM32WL3x-Nucleo\\stm32wl3x_nucleo.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\BSP\\STM32WL3x-Nucleo\\stm32wl3x_nucleo.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo/stm32wl3x_nucleo.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/BSP/STM32WL3x-Nucleo/stm32wl3x_nucleo.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Src\\system_stm32wl3x.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Src\\system_stm32wl3x.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Src/system_stm32wl3x.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Src/system_stm32wl3x.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_cortex.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_cortex.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_cortex.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_cortex.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_dma.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_dma.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_dma.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_dma.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_flash.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_flash.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_flash.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_flash.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_flash_ex.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_flash_ex.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_flash_ex.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_flash_ex.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_gpio.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_gpio.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_gpio.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_gpio.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_mrsubg.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_mrsubg.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_mrsubg.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_mrsubg.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_pwr.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_pwr.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_pwr.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_pwr.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_pwr_ex.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_pwr_ex.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_pwr_ex.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_pwr_ex.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_rcc.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_rcc.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_rcc.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_rcc.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_rcc_ex.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_rcc_ex.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_rcc_ex.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_rcc_ex.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_tim.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_tim.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_tim.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_tim.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_tim_ex.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_hal_tim_ex.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_tim_ex.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_tim_ex.c.obj"
+},
+{
+  "directory": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug",
+  "command": "C:\\Users\\micke\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32WL3XX -DUSE_HAL_DRIVER -IC:/dev/stm32/MRSUBG_Skeleton/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include -IC:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo -fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment -mcpu=cortex-m0plus -mlittle-endian -mthumb --specs=nano.specs -std=gnu11 -g3 -O0 -Wall -fstack-usage -fcyclomatic-complexity -o CMakeFiles\\MRSUBG_Skeleton.dir\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_ll_utils.c.obj -c C:\\dev\\stm32\\MRSUBG_Skeleton\\Drivers\\STM32WL3x_HAL_Driver\\Src\\stm32wl3x_ll_utils.c",
+  "file": "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_ll_utils.c",
+  "output": "C:/dev/stm32/MRSUBG_Skeleton/build/Debug/CMakeFiles/MRSUBG_Skeleton.dir/Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_ll_utils.c.obj"
+}
+]

@@ -1,0 +1,615 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "MRSUBG_Skeleton.elf"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_options",
+			"include",
+			"target_compile_options",
+			"target_compile_definitions",
+			"target_include_directories",
+			"target_sources"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt",
+			"cmake/flags.cmake",
+			"cmake/files.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 24,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 27,
+				"parent" : 0
+			},
+			{
+				"file" : 1,
+				"parent" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 102,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 5,
+				"parent" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 76,
+				"parent" : 3
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 67,
+				"parent" : 3
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 29,
+				"parent" : 0
+			},
+			{
+				"file" : 2,
+				"parent" : 8
+			},
+			{
+				"command" : 6,
+				"file" : 2,
+				"line" : 2,
+				"parent" : 9
+			}
+		]
+	},
+	"codemodelVersion" : 
+	{
+		"major" : 2,
+		"minor" : 11
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"backtrace" : 5,
+					"fragment" : "-mcpu=cortex-m0plus"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-mlittle-endian"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-mthumb"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "--specs=nano.specs"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-g3"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-x"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "assembler-with-cpp"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 6,
+					"define" : "DEBUG"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Inc"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo"
+				}
+			],
+			"language" : "ASM",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-mcpu=cortex-m0plus"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-mlittle-endian"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-mthumb"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "--specs=nano.specs"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-std=gnu11"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-g3"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-O0"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fstack-usage"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fcyclomatic-complexity"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 6,
+					"define" : "DEBUG"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "STM32WL3XX"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "USE_HAL_DRIVER"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Inc"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Drivers/STM32WL3x_HAL_Driver/Inc/Legacy"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Device/ST/STM32WL3X/Include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Drivers/CMSIS/Include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/dev/stm32/MRSUBG_Skeleton/Drivers/BSP/STM32WL3x-Nucleo"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				5,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22
+			]
+		}
+	],
+	"id" : "MRSUBG_Skeleton::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-fdata-sections -ffunction-sections -Wl,--gc-sections -Wno-comment",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-mcpu=cortex-m0plus",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-mlittle-endian",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-mthumb",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "--specs=nano.specs",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-TC:/dev/stm32/MRSUBG_Skeleton/build/Debug/STM32WL33CCVX_FLASH.ld",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "--specs=nosys.specs",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-Wl,-Map=C:/dev/stm32/MRSUBG_Skeleton/build/Debug/MRSUBG_Skeleton.map",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-static",
+				"role" : "flags"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "MRSUBG_Skeleton",
+	"nameOnDisk" : "MRSUBG_Skeleton.elf",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0,
+				6
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				5,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 0,
+			"path" : "Application/Startup/startup_stm32wl33ccvx.s",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Src/main.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Src/stm32wl3x_hal_msp.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Src/stm32wl3x_it.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Application/User/syscalls.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Application/User/sysmem.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"path" : "README.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/BSP/STM32WL3x-Nucleo/stm32wl3x_nucleo.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Src/system_stm32wl3x.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_cortex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_dma.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_flash.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_flash_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_gpio.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_mrsubg.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_pwr.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_pwr_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_rcc.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_rcc_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_tim.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_hal_tim_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 10,
+			"backtraces" : 
+			[
+				10
+			],
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32WL3x_HAL_Driver/Src/stm32wl3x_ll_utils.c",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "EXECUTABLE"
+}
