@@ -31,11 +31,16 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/files.cmake)
 # Add sources to executable/library
 target_sources(${PROJECT_NAME} PRIVATE
   # User defined sources
+  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/TsUnb/phy.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Utils/bit_access.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Utils/burst_helpers.c
 )
 
 # Add include directories
 target_include_directories(${PROJECT_NAME} PRIVATE
   # User defined include directories
+  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/TsUnb
+  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Utils
 )
 
 # Compiler options
