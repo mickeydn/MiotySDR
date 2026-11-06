@@ -1,0 +1,33 @@
+
+# Build output from all projects
+**/build/
+**/cmake-build-*/
+**/out/
+
+# CMake generated files
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/build.ninja
+**/.ninja_deps
+**/.ninja_log
+
+# Compiled files
+*.o
+*.obj
+*.elf
+*.hex
+*.bin
+*.map
+*.a
+*.su
+
+# IDE-generated files
+**/.settings/*.store.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Raw SDR recordings
+TF-pattern tests/*.wav
