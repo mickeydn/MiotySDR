@@ -1,6 +1,59 @@
 #include "phy.h"
 #include "bit_access.h"
-#include "burst_helpers.h"
+#include "radio_burst.h"
+
+
+uint16_t phy_encode(radio_burst_t* const bursts, const uint8_t* const mpdu, uint8_t mpdu_len){
+
+    //making buffer arrays for the PHY payload and the coded bits
+    uint8_t phy_payload[TSUNBPHY_MAX_PSDU_LENGTH + TSUNBPHY_OVERHEAD];
+    uint8_t coded[TSUNBPHY_MAX_FEC_BYTES];
+
+    //build the PHY payload from the MPDU
+    uint16_t payload_bits = phy_build_frame(mpdu, mpdu_len, phy_payload);
+    phy_whiten_data(phy_payload, payload_bits);
+    uint16_t coded_bits = phy_fec_encode(phy_payload, payload_bits, coded);
+
+    phy_interleave(coded, coded_bits, bursts);
+
+    uint16_t num_bursts = phy_num_bursts(mpdu_len);
+
+    for(uint16_t i = 0; i < num_bursts; i++){
+        radio_burst_add_pilot(&bursts[i], i);
+        radio_burst_msk_precode(&bursts[i]);
+    }
+
+    return num_bursts;
+}
+
+
+
+
+
+uint16_t phy_build_frame(const uint8_t* const mpdu, uint8_t mpdu_len, uint8_t* const phy_payload){
+    phy_payload[TSUNBPHY_PAYLOAD_PSI_POS] = mpdu_len; //set PSI field
+    
+    for(uint16_t i = 0; i < mpdu_len; i++){
+        phy_payload[TSUNBPHY_PAYLOAD_DATA_POS + i] = mpdu[i]; //copy MPDU into payload
+    }
+
+    phy_payload[TSUNBPHY_PAYLOAD_DATA_POS + mpdu_len] = TSUNBPHY_MMODE_DUMMY << 6; //set MMODE field to dummy value
+
+    phy_payload[TSUNBPHY_PAYLOAD_CRC_POS] = phy_crc8(&phy_payload[TSUNBPHY_PAYLOAD_DATA_POS], mpdu_len * 8 + TSUNBPHY_MMODE_BITS); //calculate payload CRC
+
+    if(mpdu_len < TSUNBPHY_MIN_PSDU_LENGTH){
+        for(uint16_t i = mpdu_len; i < TSUNBPHY_MIN_PSDU_LENGTH; i++){
+            phy_payload[TSUNBPHY_PAYLOAD_DATA_POS + i] = 0; //zero pad payload to minimum length
+        }
+        phy_payload[TSUNBPHY_PAYLOAD_DATA_POS + TSUNBPHY_MIN_PSDU_LENGTH] = TSUNBPHY_MMODE_DUMMY << 6;
+    }
+
+
+    phy_payload[TSUNBPHY_HEADER_CRC_POS] = phy_crc8(&phy_payload[TSUNBPHY_PAYLOAD_CRC_POS],TSUNBPHY_PAYLOAD_CRC_BITS + TSUNBPHY_PAYLOAD_PSI_BITS ); //calculate header CRC
+
+    uint16_t mpdu_total_bits = mpdu_len < TSUNBPHY_MIN_PSDU_LENGTH ? (TSUNBPHY_MIN_PSDU_LENGTH) * 8 : mpdu_len * 8;
+    return TSUNBPHY_HEADER_BITS + mpdu_total_bits + TSUNBPHY_MMODE_BITS; //return total number of bits in the PHY payload
+}
 
 
 uint8_t phy_crc8(const uint8_t* const data, uint16_t num_bits){
@@ -55,10 +108,10 @@ uint16_t phy_fec_encode(const uint8_t* const input, uint16_t num_bits, uint8_t* 
 
 }
 
-void phy_interleave(const uint8_t* const coded, uint16_t num_bits, uint8_t* const bursts){
+void phy_interleave(const uint8_t* const coded, uint16_t num_bits, radio_burst_t* const bursts){
 
     uint16_t num_bursts = num_bits / TSUNBPHY_DATABITS_BURST;
-    uint8_t count[TSUNBPHY_MAX_PSDU_LENGTH + TSUNBPHY_OVERHEAD] = {0};
+    uint8_t count[TSUNBPHY_MAX_BURSTS] = {0};
 
     for (uint16_t i = 0; i < num_bits; i++) {
 
@@ -73,22 +126,13 @@ void phy_interleave(const uint8_t* const coded, uint16_t num_bits, uint8_t* cons
         uint8_t  m = phy_ilv_position(s, o);
 
         // sætter 
-        bit_write(bursts, s * TSUNBPHY_TOTAL_SYMBOLS_BURST + m, bit_read(coded, src));
+        bit_write(bursts[s].data,m, bit_read(coded, src));
     }
 }
 
 
-void phy_insert_pilot(uint8_t* const bursts, uint16_t num_bursts){
-
-    static const uint8_t pilot_core[2] = {0x74, 0x20};
-    static const uint8_t pilot_ext[2]  = {0x4F, 0xA0};
-
-    for (uint16_t s = 0; s < num_bursts; s++) {
-
-        const uint8_t* pilot = (s < TSUNBPHY_CORE_FRAME_BURSTS) ? pilot_core : pilot_ext;
-
-        for (uint8_t k = 0; k < TSUNBPHY_PILOT_BITS; k++) {
-            bit_write(bursts, s * TSUNBPHY_TOTAL_SYMBOLS_BURST + TSUNBPHY_SYMBOLS_PER_HALF_BURST + k, bit_read(pilot, k));
-        }
-    }
+uint16_t phy_num_bursts(uint8_t mpdu_len){
+    uint16_t payload_bytes = mpdu_len < TSUNBPHY_MIN_PSDU_LENGTH ? TSUNBPHY_MIN_PSDU_LENGTH : mpdu_len;
+    return payload_bytes + TSUNBPHY_OVERHEAD; //one PHY payload byte becomes one burst after FEC
 }
+

@@ -2,12 +2,28 @@
 #define PHY_H          
 
 #include <stdint.h>    
+#include "radio_burst.h"
 
 #define TSUNBPHY_CRC8_POLY          0x9B
 
 #define TSUNBPHY_CRC8_INIT			0xFF
 
 #define TSUNBPHY_WHITEN_INIT		0x1FF
+
+#define TSUNBPHY_HEADER_CRC_POS		0
+
+//! Position of payload CRC
+#define TSUNBPHY_PAYLOAD_CRC_POS	1
+#define TSUNBPHY_PAYLOAD_CRC_BITS	8
+
+//! Position of PSI field
+#define TSUNBPHY_PAYLOAD_PSI_POS	2
+#define TSUNBPHY_PAYLOAD_PSI_BITS	8
+//! Start of data
+#define TSUNBPHY_PAYLOAD_DATA_POS	3
+
+//this one is used for testing without a proper MAC calculation, to be removed later
+#define TSUNBPHY_MMODE_DUMMY			0
 
 /* PHY payload fields (ETSI TS 103 357-2, Table 4-70) */
 #define TSUNBPHY_HEADER_BITS        24      /* Header CRC + Payload CRC + PSI */
@@ -26,6 +42,7 @@
 #define TSUNBPHY_MAX_FEC_BYTES      777     /* 3 * (TSUNBPHY_MAX_PSDU_LENGTH + TSUNBPHY_OVERHEAD) */
 #define TSUNBPHY_DATABITS_BURST     24  
 #define TSUNBPHY_PILOT_BITS         12
+#define TSUNBPHY_MAX_BURSTS         259     /* TSUNBPHY_MAX_PSDU_LENGTH + TSUNBPHY_OVERHEAD */
 
 //interleaver defines
 #define TSUNBPHY_CORE_FRAME_BURSTS  24
@@ -38,16 +55,19 @@
 
 // Function prototypes
 
+uint16_t phy_encode(radio_burst_t* const bursts, const uint8_t* const mpdu, uint8_t mpdu_len);
+
+uint16_t phy_build_frame(const uint8_t* const mpdu, uint8_t mpdu_len, uint8_t* const phy_payload);
+
 uint8_t phy_crc8(const uint8_t* const data, uint16_t num_bits);   
 
 void phy_whiten_data(uint8_t* const data, uint16_t num_bits);
 
 uint16_t phy_fec_encode(const uint8_t* const input, uint16_t num_bits, uint8_t* const output);
 
-void phy_interleave(const uint8_t* const coded, uint16_t num_bits, uint8_t* const bursts);
+void phy_interleave(const uint8_t* const coded, uint16_t num_bits, radio_burst_t* const bursts);
 
-void phy_insert_pilot(uint8_t* const bursts, uint16_t num_bursts);
-
+uint16_t phy_num_bursts(uint8_t mpdu_len);
 
 
 #endif

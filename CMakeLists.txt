@@ -33,7 +33,7 @@ target_sources(${PROJECT_NAME} PRIVATE
   # User defined sources
   ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/TsUnb/phy.c
   ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Utils/bit_access.c
-  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Utils/burst_helpers.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Utils/radio_burst.c
 )
 
 # Add include directories

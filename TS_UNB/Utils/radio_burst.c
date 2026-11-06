@@ -1,5 +1,31 @@
-#include "burst_helpers.h"
+#include "radio_burst.h"
 #include "phy.h"
+#include "bit_access.h"
+
+
+void radio_burst_msk_precode(radio_burst_t* const burst){
+    uint8_t prev = 0;
+
+    for (uint8_t m = 0; m < TSUNBPHY_TOTAL_SYMBOLS_BURST; m++) {
+        uint8_t e = bit_read(burst->data, m);
+        uint8_t d = e ^ prev;
+        bit_write(burst->data, m, d);
+
+        prev = e;
+    }
+}
+
+void radio_burst_add_pilot(radio_burst_t* const burst, uint16_t burst_idx){
+
+    static const uint8_t pilot_core[2] = {0x74, 0x20};
+    static const uint8_t pilot_ext[2]  = {0x4F, 0xA0};
+
+    const uint8_t* pilot = (burst_idx < TSUNBPHY_CORE_FRAME_BURSTS) ? pilot_core : pilot_ext;
+
+    for (uint8_t k = 0; k < TSUNBPHY_PILOT_BITS; k++) {
+        bit_write(burst->data, TSUNBPHY_SYMBOLS_PER_HALF_BURST + k, bit_read(pilot, k));
+    }
+}
 
 uint16_t phy_ilv_subpacket(uint16_t bit_idx, uint16_t num_bursts) {
     //the first half of the frame is 288 bits, the second half is 288 bits

@@ -1,11 +1,21 @@
 /**
- * @file    burst_helpers.h
+ * @file    radio_burst.h
  * @brief   Helpers for distributing coded bits onto TS-UNB radio bursts.
  */
-#ifndef BURST_HELPERS_H
-#define BURST_HELPERS_H
+#ifndef RADIO_BURST_H
+#define RADIO_BURST_H
 
 #include <stdint.h>
+
+
+typedef struct{
+    uint8_t data[5]; //5 bytes = 40 bits, enough for 36 bits of a burst
+
+} radio_burst_t;
+
+void radio_burst_msk_precode(radio_burst_t* const burst);
+
+void radio_burst_add_pilot(radio_burst_t* const burst, uint16_t burst_idx);
 
 /**
  * @brief  Find the sub-packet (radio burst) a coded bit belongs to.
@@ -23,4 +33,6 @@ uint16_t phy_ilv_subpacket(uint16_t bit_idx, uint16_t num_bursts);
  */
 uint8_t phy_ilv_position(uint16_t subpacket, uint8_t rank);
 
-#endif /* BURST_HELPERS_H */
+
+
+#endif /* RADIO_BURST_H */
