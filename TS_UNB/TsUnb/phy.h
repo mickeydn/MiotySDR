@@ -55,7 +55,7 @@
 
 // Function prototypes
 
-uint16_t phy_encode(radio_burst_t* const bursts, const uint8_t* const mpdu, uint8_t mpdu_len);
+uint16_t phy_encode(radio_burst_t* const bursts, const uint8_t* const mpdu, uint8_t mpdu_len, uint8_t tsma_pattern);
 
 uint16_t phy_build_frame(const uint8_t* const mpdu, uint8_t mpdu_len, uint8_t* const phy_payload);
 

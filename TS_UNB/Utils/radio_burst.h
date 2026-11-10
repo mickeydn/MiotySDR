@@ -9,8 +9,9 @@
 
 
 typedef struct{
-    uint8_t data[5]; //5 bytes = 40 bits, enough for 36 bits of a burst
-
+    uint32_t freq_hz;   //frequency of the burst in Hz
+    uint8_t data[5];    //5 bytes = 40 bits, enough for 36 bits of a burst
+    uint16_t t_rb;      //time of burst delay in symbols
 } radio_burst_t;
 
 void radio_burst_msk_precode(radio_burst_t* const burst);

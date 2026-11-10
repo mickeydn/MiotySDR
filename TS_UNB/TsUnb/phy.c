@@ -1,9 +1,9 @@
 #include "phy.h"
 #include "bit_access.h"
 #include "radio_burst.h"
+#include "tsma.h"
 
-
-uint16_t phy_encode(radio_burst_t* const bursts, const uint8_t* const mpdu, uint8_t mpdu_len){
+uint16_t phy_encode(radio_burst_t* const bursts, const uint8_t* const mpdu, uint8_t mpdu_len, uint8_t tsma_pattern){
 
     //making buffer arrays for the PHY payload and the coded bits
     uint8_t phy_payload[TSUNBPHY_MAX_PSDU_LENGTH + TSUNBPHY_OVERHEAD];
@@ -11,6 +11,7 @@ uint16_t phy_encode(radio_burst_t* const bursts, const uint8_t* const mpdu, uint
 
     //build the PHY payload from the MPDU
     uint16_t payload_bits = phy_build_frame(mpdu, mpdu_len, phy_payload);
+    uint8_t payload_crc = phy_payload[TSUNBPHY_PAYLOAD_CRC_POS];
     phy_whiten_data(phy_payload, payload_bits);
     uint16_t coded_bits = phy_fec_encode(phy_payload, payload_bits, coded);
 
@@ -23,6 +24,7 @@ uint16_t phy_encode(radio_burst_t* const bursts, const uint8_t* const mpdu, uint
         radio_burst_msk_precode(&bursts[i]);
     }
 
+    tsma_apply(bursts, num_bursts, tsma_pattern, payload_crc);
     return num_bursts;
 }
 
