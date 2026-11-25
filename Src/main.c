@@ -22,16 +22,23 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "phy.h"
+#include "stm32wl3x_nucleo.h"
+#include "trx_mrsubg.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+typedef enum {
+  APP_MODE_TRIGGER,
+  APP_MODE_AUTO
+} app_mode_t;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define APP_AUTO_INTERVAL_MS   40000   // time between uplinks in auto mode
+#define APP_TSMA_PATTERN       0       // fixed TSMA pattern (0..7)
 
 /* USER CODE END PD */
 
@@ -42,24 +49,39 @@
 
 /* Private variables ---------------------------------------------------------*/
 
-SMRSubGConfig_t MRSUBG_RadioInitStruct;
-MRSubG_PcktBasicFields_t MRSUBG_PacketSettingsStruct;
-
 /* USER CODE BEGIN PV */
+static radio_burst_t bursts[TSUNBPHY_MAX_BURSTS];
+static uint16_t num_bursts;
 
+// test program: fixed ETSI TS 103 357-2 Annex D.3 test vector MPDU (15 bytes, "MIOTY")
+static const uint8_t mpdu[] = { 0x00, 0xf0, 0x01, 0x0b, 0x8d, 0xe1, 0x4c, 0xbf,
+                                0x63, 0x8d, 0xdc, 0xd3, 0xd2, 0x30, 0xae };
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_MRSUBG_Init(void);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+static uint8_t button_pressed(Button_TypeDef b){
+    static uint8_t last[BUTTONn];          // previous state per button
+    uint8_t now = (uint8_t)BSP_PB_GetState(b);
+    uint8_t edge = (now == 1 && last[b] == 0);
+    last[b] = now;
+    return edge;
+}
+
+static void send_uplink(void){
+    BSP_LED_On(LED_BLUE);                        // blue: transmitting
+    trx_mrsubg_transmit(bursts, num_bursts);
+    BSP_LED_Off(LED_BLUE);
+}
 
 /* USER CODE END 0 */
 
@@ -95,21 +117,61 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_MRSUBG_Init();
+
   /* USER CODE BEGIN 2 */
-  
+  trx_mrsubg_init();
+  BSP_PB_Init(B1, BUTTON_MODE_GPIO);
+  BSP_PB_Init(B2, BUTTON_MODE_GPIO);
+  BSP_LED_Init(LED_BLUE);
+  BSP_LED_Init(LED_GREEN);
+  BSP_LED_Init(LED_RED);
+  BSP_LED_Off(LED_BLUE);
+  BSP_LED_Off(LED_GREEN);
+  BSP_LED_On(LED_RED);            // start in trigger mode
+
+  // the MPDU never changes, so the frame is encoded once
+  num_bursts = phy_encode(bursts, mpdu, sizeof(mpdu), APP_TSMA_PATTERN);
+
+  app_mode_t app_mode = APP_MODE_TRIGGER;
+  uint32_t last_tx = 0;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
+    /* USER CODE END WHILE */
    
-  }
-  /* USER CODE END 3 */
+
+    // B2 toggles between trigger mode (red LED) and auto mode (green LED)
+    if (button_pressed(B2)){
+      if (app_mode == APP_MODE_TRIGGER){
+        app_mode = APP_MODE_AUTO;
+        BSP_LED_On(LED_GREEN);
+        BSP_LED_Off(LED_RED);
+        last_tx = HAL_GetTick() - APP_AUTO_INTERVAL_MS;   // first auto uplink right away
+      } else {
+        app_mode = APP_MODE_TRIGGER;
+        BSP_LED_On(LED_RED);
+        BSP_LED_Off(LED_GREEN);
+      }
+    }
+
+    // B1 in trigger mode: send one uplink per press (ignored in auto mode)
+    uint8_t b1 = button_pressed(B1);
+    if (app_mode == APP_MODE_TRIGGER && b1) {
+        send_uplink();
+    }
+    if (app_mode == APP_MODE_AUTO && (HAL_GetTick() - last_tx) >= APP_AUTO_INTERVAL_MS) {
+        last_tx = HAL_GetTick();
+        send_uplink();
+    }
+
+    HAL_Delay(10);                          // simple debounce: poll every 10 ms
+    /* USER CODE END 3 */
+}
 }
 
 /**
@@ -161,55 +223,6 @@ void PeriphCommonClock_Config(void)
   {
     Error_Handler();
   }
-}
-
-/**
-  * @brief MRSUBG Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_MRSUBG_Init(void)
-{
-
-  /* USER CODE BEGIN MRSUBG_Init 0 */
-
-  /* USER CODE END MRSUBG_Init 0 */
-
-  /* USER CODE BEGIN MRSUBG_Init 1 */
-
-  /* USER CODE END MRSUBG_Init 1 */
-
-  /** Configures the radio parameters
-  */
-  MRSUBG_RadioInitStruct.lFrequencyBase = 868000000;
-  MRSUBG_RadioInitStruct.xModulationSelect = MOD_2FSK;
-  MRSUBG_RadioInitStruct.lDatarate = 38400;
-  MRSUBG_RadioInitStruct.lFreqDev = 20000;
-  MRSUBG_RadioInitStruct.lBandwidth = 100000;
-  MRSUBG_RadioInitStruct.dsssExp = 0;
-  MRSUBG_RadioInitStruct.outputPower = 14;
-  MRSUBG_RadioInitStruct.PADrvMode = PA_DRV_TX_HP;
-  HAL_MRSubG_Init(&MRSUBG_RadioInitStruct);
-
-  /** Configures the packet parameters
-  */
-  MRSUBG_PacketSettingsStruct.PreambleLength = 16;
-  MRSUBG_PacketSettingsStruct.PostambleLength = 0;
-  MRSUBG_PacketSettingsStruct.SyncLength = 31;
-  MRSUBG_PacketSettingsStruct.SyncWord = 0x88888888;
-  MRSUBG_PacketSettingsStruct.FixVarLength = VARIABLE;
-  MRSUBG_PacketSettingsStruct.PreambleSequence = PRE_SEQ_0101;
-  MRSUBG_PacketSettingsStruct.PostambleSequence = POST_SEQ_0101;
-  MRSUBG_PacketSettingsStruct.CrcMode = PKT_CRC_MODE_8BITS;
-  MRSUBG_PacketSettingsStruct.Coding = CODING_NONE;
-  MRSUBG_PacketSettingsStruct.DataWhitening = ENABLE;
-  MRSUBG_PacketSettingsStruct.LengthWidth = BYTE_LEN_1;
-  MRSUBG_PacketSettingsStruct.SyncPresent = ENABLE;
-  HAL_MRSubG_PacketBasicInit(&MRSUBG_PacketSettingsStruct);
-  /* USER CODE BEGIN MRSUBG_Init 2 */
-
-  /* USER CODE END MRSUBG_Init 2 */
-
 }
 
 /**
