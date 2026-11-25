@@ -36,10 +36,6 @@ target_sources(${PROJECT_NAME} PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Utils/radio_burst.c
   ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/TsUnb/tsma.c
   ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Trx/trx_mrsubg.c
-  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Mac/aes128.c
-  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Mac/cmac.c
-  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Mac/mac.c
-  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Mac/mac_nvm.c
 )
 
 # Add include directories
@@ -48,7 +44,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/TsUnb
   ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Utils
   ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Trx
-  ${CMAKE_CURRENT_SOURCE_DIR}/TS_UNB/Mac
 )
 
 # Compiler options

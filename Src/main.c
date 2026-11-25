@@ -22,12 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <string.h>
 #include "phy.h"
-#include "tsma.h"
-#include "mac.h"
-#include "mac_keys.h"
-#include "mac_nvm.h"
 #include "stm32wl3x_nucleo.h"
 #include "trx_mrsubg.h"
 /* USER CODE END Includes */
@@ -38,19 +33,12 @@ typedef enum {
   APP_MODE_TRIGGER,
   APP_MODE_AUTO
 } app_mode_t;
-
-typedef enum {
-  PRESS_NONE,
-  PRESS_SHORT,
-  PRESS_LONG
-} press_t;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define APP_AUTO_INTERVAL_MS   40000              // time between uplinks in auto mode
-#define APP_LONG_PRESS_MS      1000               // B1 held this long = class A uplink
-#define APP_AUTO_UPLINK_FLAGS  MAC_FLAGS_CLASS_Z  // uplink type used in auto mode
+#define APP_AUTO_INTERVAL_MS   40000   // time between uplinks in auto mode
+#define APP_TSMA_PATTERN       0       // fixed TSMA pattern (0..7)
 
 /* USER CODE END PD */
 
@@ -64,10 +52,10 @@ typedef enum {
 /* USER CODE BEGIN PV */
 static radio_burst_t bursts[TSUNBPHY_MAX_BURSTS];
 static uint16_t num_bursts;
-static mac_ctx_t mac_ctx;
 
-// application payload (LPDU), max 10 bytes with short addressing
-static const uint8_t app_payload[] = { 'M', 'I', 'O', 'T', 'Y' };
+// test program: fixed ETSI TS 103 357-2 Annex D.3 test vector MPDU (15 bytes, "MIOTY")
+static const uint8_t mpdu[] = { 0x00, 0xf0, 0x01, 0x0b, 0x8d, 0xe1, 0x4c, 0xbf,
+                                0x63, 0x8d, 0xdc, 0xd3, 0xd2, 0x30, 0xae };
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -89,68 +77,8 @@ static uint8_t button_pressed(Button_TypeDef b){
     return edge;
 }
 
-/**
- * @brief  Classify presses on B1: short press (reported on release) or
- *         long press (reported once when held for APP_LONG_PRESS_MS).
- */
-static press_t b1_press_type(void){
-    static uint8_t  down;
-    static uint8_t  long_reported;
-    static uint32_t t_down;
-    uint8_t now = (uint8_t)BSP_PB_GetState(B1);
-    press_t result = PRESS_NONE;
-
-    if (now && !down){                                   // pressed
-        down = 1;
-        long_reported = 0;
-        t_down = HAL_GetTick();
-    } else if (now && down && !long_reported &&
-               (HAL_GetTick() - t_down) >= APP_LONG_PRESS_MS){   // held long enough
-        long_reported = 1;
-        result = PRESS_LONG;
-    } else if (!now && down){                            // released
-        down = 0;
-        if (!long_reported){
-            result = PRESS_SHORT;
-        }
-    }
-    return result;
-}
-
-static void app_mac_init(void){
-    const uint8_t eui[8]  = MAC_KEY_EUI64;
-    const uint8_t key[16] = MAC_KEY_NWK_KEY;
-    memcpy(mac_ctx.eui64, eui, sizeof(eui));
-    memcpy(mac_ctx.nwk_key, key, sizeof(key));
-    mac_ctx.short_addr     = MAC_KEY_SHORT_ADDR;
-    mac_ctx.use_short_addr = MAC_KEY_USE_SHORT;
-    mac_ctx.packet_counter = mac_nvm_load_counter(MAC_KEY_START_COUNTER);
-}
-
-/**
- * @brief  Build and transmit one uplink: MAC -> store counter -> PHY -> radio.
- * @param  flags  MAC_FLAGS_CLASS_Z, or MAC_FLAGS_CLASS_A to request a downlink
- */
-static void send_uplink(uint8_t flags){
-    uint8_t mpdu[MAC_MAX_MPDU_LEN];
-    uint32_t counter = mac_ctx.packet_counter;           // counter used by this packet
-
-    uint8_t mpdu_len = mac_build_uplink(&mac_ctx, app_payload, sizeof(app_payload), flags, mpdu);
-    if (mpdu_len == 0){
-        return;
-    }
-    // store the next counter before transmitting, so a counter is never reused after a reset
-    // (also keeps the flash erase out of the frame timing)
-    mac_nvm_save_counter(mac_ctx.packet_counter);
-
-    // vary the TSMA pattern from frame to frame (ETSI: use at least 6 of the 8 UPG1 patterns)
-    uint8_t pattern = (uint8_t)(counter % TSUNBTSMA_PATTERNS);
-    num_bursts = phy_encode(bursts, mpdu, mpdu_len, pattern);
-    if (num_bursts == 0){
-        return;
-    }
-
-    BSP_LED_On(LED_BLUE);                                // blue: transmitting
+static void send_uplink(void){
+    BSP_LED_On(LED_BLUE);                        // blue: transmitting
     trx_mrsubg_transmit(bursts, num_bursts);
     BSP_LED_Off(LED_BLUE);
 }
@@ -201,7 +129,8 @@ int main(void)
   BSP_LED_Off(LED_GREEN);
   BSP_LED_On(LED_RED);            // start in trigger mode
 
-  app_mac_init();
+  // the MPDU never changes, so the frame is encoded once
+  num_bursts = phy_encode(bursts, mpdu, sizeof(mpdu), APP_TSMA_PATTERN);
 
   app_mode_t app_mode = APP_MODE_TRIGGER;
   uint32_t last_tx = 0;
@@ -230,17 +159,14 @@ int main(void)
       }
     }
 
-    // B1 in trigger mode: short press = class Z uplink, long press = class A uplink (requests a downlink)
-    press_t b1 = b1_press_type();
-    if (app_mode == APP_MODE_TRIGGER && b1 == PRESS_SHORT) {
-        send_uplink(MAC_FLAGS_CLASS_Z);
-    }
-    if (app_mode == APP_MODE_TRIGGER && b1 == PRESS_LONG) {
-        send_uplink(MAC_FLAGS_CLASS_A);
+    // B1 in trigger mode: send one uplink per press (ignored in auto mode)
+    uint8_t b1 = button_pressed(B1);
+    if (app_mode == APP_MODE_TRIGGER && b1) {
+        send_uplink();
     }
     if (app_mode == APP_MODE_AUTO && (HAL_GetTick() - last_tx) >= APP_AUTO_INTERVAL_MS) {
         last_tx = HAL_GetTick();
-        send_uplink(APP_AUTO_UPLINK_FLAGS);
+        send_uplink();
     }
 
     HAL_Delay(10);                          // simple debounce: poll every 10 ms
