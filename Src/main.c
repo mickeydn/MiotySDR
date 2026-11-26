@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "phy.h"
+#include "test_packets.h"
 #include "stm32wl3x_nucleo.h"
 #include "trx_mrsubg.h"
 /* USER CODE END Includes */
@@ -33,11 +34,18 @@ typedef enum {
   APP_MODE_TRIGGER,
   APP_MODE_AUTO
 } app_mode_t;
+
+typedef enum {
+  PRESS_NONE,
+  PRESS_SHORT,
+  PRESS_LONG
+} press_t;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define APP_AUTO_INTERVAL_MS   40000   // time between uplinks in auto mode
+#define APP_LONG_PRESS_MS      1000    // B1 held this long = class A uplink
 #define APP_TSMA_PATTERN       0       // fixed TSMA pattern (0..7)
 
 /* USER CODE END PD */
@@ -53,9 +61,9 @@ typedef enum {
 static radio_burst_t bursts[TSUNBPHY_MAX_BURSTS];
 static uint16_t num_bursts;
 
-// test program: fixed ETSI TS 103 357-2 Annex D.3 test vector MPDU (15 bytes, "MIOTY")
-static const uint8_t mpdu[] = { 0x00, 0xf0, 0x01, 0x0b, 0x8d, 0xe1, 0x4c, 0xbf,
-                                0x63, 0x8d, 0xdc, 0xd3, 0xd2, 0x30, 0xae };
+// index of the next precomputed packet (packet counter = TEST_PACKETS_START_COUNTER + index);
+// RAM only, so it restarts at 0 after a reset
+static uint16_t packet_index = 1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -77,7 +85,49 @@ static uint8_t button_pressed(Button_TypeDef b){
     return edge;
 }
 
-static void send_uplink(void){
+/**
+ * @brief  Classify presses on B1: short press (reported on release) or
+ *         long press (reported once when held for APP_LONG_PRESS_MS).
+ */
+static press_t b1_press_type(void){
+    static uint8_t  down;
+    static uint8_t  long_reported;
+    static uint32_t t_down;
+    uint8_t now = (uint8_t)BSP_PB_GetState(B1);
+    press_t result = PRESS_NONE;
+
+    if (now && !down){                                   // pressed
+        down = 1;
+        long_reported = 0;
+        t_down = HAL_GetTick();
+    } else if (now && down && !long_reported &&
+               (HAL_GetTick() - t_down) >= APP_LONG_PRESS_MS){   // held long enough
+        long_reported = 1;
+        result = PRESS_LONG;
+    } else if (!now && down){                            // released
+        down = 0;
+        if (!long_reported){
+            result = PRESS_SHORT;
+        }
+    }
+    return result;
+}
+
+/**
+ * @brief  Transmit the next precomputed uplink (new packet counter each time).
+ *         Class Z and class A share one counter sequence.
+ * @param  class_a  0 = class Z, 1 = class A (requests a downlink)
+ */
+static void send_uplink(uint8_t class_a){
+    const uint8_t *mpdu = class_a ? test_packets_class_a[packet_index]
+                                  : test_packets_class_z[packet_index];
+    // wraps around after the last packet (the base station will then reject them as replays)
+    packet_index = (uint16_t)((packet_index + 1u) % TEST_PACKETS_COUNT);
+
+    num_bursts = phy_encode(bursts, mpdu, TEST_PACKETS_MPDU_LEN, APP_TSMA_PATTERN);
+    if (num_bursts == 0){
+        return;
+    }
     BSP_LED_On(LED_BLUE);                        // blue: transmitting
     trx_mrsubg_transmit(bursts, num_bursts);
     BSP_LED_Off(LED_BLUE);
@@ -129,9 +179,6 @@ int main(void)
   BSP_LED_Off(LED_GREEN);
   BSP_LED_On(LED_RED);            // start in trigger mode
 
-  // the MPDU never changes, so the frame is encoded once
-  num_bursts = phy_encode(bursts, mpdu, sizeof(mpdu), APP_TSMA_PATTERN);
-
   app_mode_t app_mode = APP_MODE_TRIGGER;
   uint32_t last_tx = 0;
 
@@ -159,14 +206,17 @@ int main(void)
       }
     }
 
-    // B1 in trigger mode: send one uplink per press (ignored in auto mode)
-    uint8_t b1 = button_pressed(B1);
-    if (app_mode == APP_MODE_TRIGGER && b1) {
-        send_uplink();
+    // B1 in trigger mode: short press = class Z uplink, long press = class A uplink (ignored in auto mode)
+    press_t b1 = b1_press_type();
+    if (app_mode == APP_MODE_TRIGGER && b1 == PRESS_SHORT) {
+        send_uplink(0);
+    }
+    if (app_mode == APP_MODE_TRIGGER && b1 == PRESS_LONG) {
+        send_uplink(1);
     }
     if (app_mode == APP_MODE_AUTO && (HAL_GetTick() - last_tx) >= APP_AUTO_INTERVAL_MS) {
         last_tx = HAL_GetTick();
-        send_uplink();
+        send_uplink(0);                         // auto mode sends class Z
     }
 
     HAL_Delay(10);                          // simple debounce: poll every 10 ms
